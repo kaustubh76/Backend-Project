@@ -1,6 +1,6 @@
 import { Router } from "express";
 // This function will handle the user registration logic.
-import { registerUser } from "../controllers/user.controller.js";
+import { loginUser, logoutUser, registerUser, refreshAccessToken } from "../controllers/user.controller.js";
 // This middleware handles file uploads.
 import { upload } from "../middlewares/multer.middleware.js";
 
@@ -18,5 +18,8 @@ router.route("/register").post(
     ]),
     registerUser 
 )
+
+router.route("/logout").post(verifyJWT, logoutUser)
+router.route("/refresh-token").post( refreshAccessToken )
 
 export default router
