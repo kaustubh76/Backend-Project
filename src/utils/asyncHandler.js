@@ -1,10 +1,16 @@
+// Define a function 'asyncHandler' that takes a 'requestHandler' function as an argument.
 const asyncHandler = (requestHandler) => {
+
+    // Return a new function that takes 'req' (request), 'res' (response), and 'next' (next middleware) as arguments.
     return async (req, res, next) => {
-        Promise.resolve(requestHandler(req, res, next)).catch((error) => next(error))
+
+        // Call the 'requestHandler' function and ensure it returns a resolved promise.
+        // If the promise is rejected (i.e., an error occurs), pass the error to the 'next' middleware to handle it.
+        Promise.resolve(requestHandler(req, res, next)).catch((error) => next(error));
     };
 }
+export { asyncHandler }
 
-export {asyncHandler}
 
 // const asyncHandler = () => {}
 // const asyncHandler = (func) => () => {}
