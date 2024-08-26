@@ -3,7 +3,8 @@ import { Router } from "express";
 import { loginUser, logoutUser, registerUser, refreshAccessToken, changeCurrentPassword, getCurrentUser, updateAccountDetails, updateUserAvatar, updateUserCoverImage, getUserChannelProfile, getWatchHistory } from "../controllers/user.controller.js";
 // This middleware handles file uploads.
 import { upload } from "../middlewares/multer.middleware.js";
-import { verify } from "jsonwebtoken";
+import jwt from "jsonwebtoken";
+const { verify } = jwt;
 import { verifyJWT } from "../middlewares/auth.middleware.js";
 
 // Creating a new instance of the router object using the Router function.
